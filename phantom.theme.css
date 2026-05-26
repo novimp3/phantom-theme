@@ -4,7 +4,7 @@
  * @name phantom-theme
  * @description basically AMOLED-cord but better.
  * @author novi.mp3
- * @version 1.0
+ * @version 1.4
  */
 
 :root,
@@ -151,17 +151,18 @@
     color: #ffffff !important;
 }
 
-/* desprate try to fix the lines issue */
+/* lines fix — keep selected & mentioned borders hidden */
 li[class*="containerDefault_"][class*="selected_"] {
     border-left: none !important;
 }
 
-[class*="unread_"] {
+[class*="mentioned_"]::before {
     display: none !important;
 }
 
-[class*="mentioned_"]::before {
-    display: none !important;
+/* unread channel indicators — RESTORED */
+div[class*="unread_"] {
+    background: #a855f7 !important;
 }
 
 /* hovers */
