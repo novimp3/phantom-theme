@@ -11,7 +11,7 @@
 .theme-dark,
 .theme-midnight,
 #app-mount {
-    --font-primary: 'Space Grotesk', sans-serif;f
+    --font-primary: 'Space Grotesk', sans-serif;
     --font-display: 'Space Grotesk', sans-serif;
     --font-headline: 'Space Grotesk', sans-serif;
     --font-code: 'Consolas', monospace;
@@ -226,6 +226,11 @@ li[class*="containerDefault_"]:hover div[class*="wrapper_"] {
 span[class*="mention"] {
     color: #c084fc;
     background: rgba(168, 85, 247, 0.15);
+}
+
+span[class*="mention"]:hover {
+    color: #a855f7;
+    background: rgba(168, 85, 247, 0.25);
 }
 
 [class*="mentioned_"] {
