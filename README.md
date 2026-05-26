@@ -2,10 +2,8 @@
 
 pure black with electric purple vibes. 
 
-## preview
-<p align="center">
-  <img src="https://i.ibb.co/B5WgVSpY/image-1.png" width="600" alt="preview">
-</p>
+### preview
+![preview](preview.png)
 
 ### 📌 features
 * **pure amoled black:** everything is pitch black, not that weird default dark gray.
@@ -20,7 +18,7 @@ pure black with electric purple vibes.
 ### 🌐 website
 [![Website](https://img.shields.io/badge/🔗_Visit_Website-4285F4?style=for-the-badge&logoColor=white)](https://novimp3.github.io/phantom-theme)
 
-## note
+### note
 this code is fully open source and you can fork it as long as you will give me and luckfire credits.
 
 ### 🤝 credits
