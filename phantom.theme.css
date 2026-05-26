@@ -11,7 +11,7 @@
 .theme-dark,
 .theme-midnight,
 #app-mount {
-    --font-primary: 'Space Grotesk', sans-serif;
+    --font-primary: 'Space Grotesk', sans-serif;f
     --font-display: 'Space Grotesk', sans-serif;
     --font-headline: 'Space Grotesk', sans-serif;
     --font-code: 'Consolas', monospace;
@@ -58,7 +58,7 @@
 
 /* sidebar */
 [class*="sidebar_"],
-[class*="sidebar_"] > div,
+[class*="sidebar_"] > div:not([class*="sidebarResizeHandle_"]),
 [class*="sidebar_"] [class*="scroller_"] {
     background: #000000;
     background-color: #000000;
