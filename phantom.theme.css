@@ -4,7 +4,7 @@
  * @name phantom-theme
  * @description basically AMOLED-cord but better.
  * @author novi.mp3
- * @version 1.4
+ * @version 1.0
  */
 
 :root,
@@ -59,6 +59,18 @@
 [class*="sidebar_"] > div,
 [class*="sidebar_"] [class*="scroller_"] {
     background: #000000 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* KILL top/bottom unread bars — exact DOM from screenshot */
+div[class*="container_"][class*="bottom_"] > div[class*="containerPadding_"],
+div[class*="container_"][class*="top_"] > div[class*="containerPadding_"],
+div[class*="containerPadding_"] > div[class*="bar_"][class*="emptyBar_"],
+[class*="sidebar_"] div[class*="emptyBar_"] {
+    display: none !important;
 }
 
 /* voice channels — force black on every layer */
@@ -142,10 +154,10 @@
     color: #6b7280 !important;
 }
 
-/* UNREAD channels — white-ish so they pop */
+/* UNREAD channels — purple */
 [class*="modeUnread_"] [class*="name_"],
 [class*="modeUnreadImportant_"] [class*="name_"] {
-    color: #e4e4e7 !important;
+    color: #c084fc !important;
     font-weight: 600 !important;
 }
 
@@ -226,7 +238,7 @@ div[class*="repliedMessage_"] {
     font-weight: 500 !important;
 }
 
-/* embeds - stop them from vanishing into black */
+/* EMBEDS — stop them from vanishing into black */
 [class*="embed_"],
 [class*="embedFull_"],
 [class*="attachment_"],
