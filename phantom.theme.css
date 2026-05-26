@@ -223,14 +223,11 @@ li[class*="containerDefault_"]:hover div[class*="wrapper_"] {
     color: #ffffff;
 }
 
-span[class*="mention"] {
+span[class*="mention"],
+span[class*="mention"]:hover,
+span[class*="mention"]:active {
     color: #c084fc;
     background: rgba(168, 85, 247, 0.15);
-}
-
-span[class*="mention"]:hover {
-    color: #a855f7;
-    background: rgba(168, 85, 247, 0.25);
 }
 
 [class*="mentioned_"] {
