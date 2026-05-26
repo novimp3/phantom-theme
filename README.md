@@ -14,6 +14,10 @@ pure black with electric purple vibes.
 
 ### 🌐 website
 [![Website](https://img.shields.io/badge/🔗_Visit_Website-4285F4?style=for-the-badge&logoColor=white)](https://novimp3.github.io/phantom-theme)
+
+## note
+this code is fully open source and you can fork it as long as you will give me and luckfire credits.
+
 ### 🤝 credits
 massive credits to **luckfire** for creating **amoled-cord**. this is heavily based on/inspired by their work.
 
