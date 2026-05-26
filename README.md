@@ -1,6 +1,6 @@
 # phantom 🌌
 
-pure black with electric purple vibes. built because community banners kept breaking sidebar colors and flashbanging me, so i nuked them. 
+pure black with electric purple vibes. 
 
 ### 📌 features
 * **pure amoled black:** everything is pitch black, not that weird default dark gray.
