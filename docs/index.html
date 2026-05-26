@@ -5,70 +5,814 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>phantom 🌌</title>
     <style>
-        body {
-            background-color: #000;
-            color: #d1d1d1;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            padding: 50px 20px;
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+        
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        :root {
+            --purple: #a855f7;
+            --purple-glow: #9333ea;
+            --purple-light: #c084fc;
+            --black: #000000;
+            --surface: #050505;
+            --surface-elevated: #0a0a0a;
+            --border: #1a1a1a;
+            --border-hover: #2a2a2a;
+            --text: #d1d1d1;
+            --text-muted: #737373;
+            --text-bright: #ffffff;
+        }
+
+        body {
+            background-color: var(--black);
+            color: var(--text);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        #starfield {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 1;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+
+        .orb {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(168,85,247,0.15) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            pointer-events: none;
+            z-index: 0;
+            animation: orbFloat 20s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            bottom: -300px;
+            left: -200px;
+            top: auto;
+            right: auto;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(168,85,247,0.08) 0%, transparent 70%);
+            animation-delay: -10s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
         .container {
-            max-width: 500px;
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 0;
+            margin-bottom: 80px;
+            border-bottom: 1px solid var(--border);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--purple-light), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--purple);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-bright);
+        }
+
+        .nav-links a:hover::after {
             width: 100%;
         }
-        h1 { color: #a855f7; font-size: 2.5rem; margin-bottom: 0.5rem; }
-        p { margin-bottom: 2rem; }
-        .feature-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 20px; border-radius: 12px; }
-        h3 { color: #fff; margin-top: 0; }
-        ul { padding-left: 20px; color: #a1a1a1; }
-        li { margin-bottom: 10px; }
-        code {
-            display: block;
-            background: #000;
-            color: #a855f7;
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid #2a2a2a;
-            margin: 15px 0;
-            word-break: break-all;
+
+        .hero {
+            text-align: center;
+            padding: 60px 0 100px;
+            animation: fadeInUp 1s ease-out;
         }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(168,85,247,0.1);
+            border: 1px solid rgba(168,85,247,0.2);
+            color: var(--purple-light);
+            padding: 8px 16px;
+            border-radius: 100px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 32px;
+            backdrop-filter: blur(10px);
+        }
+
+        .badge::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: var(--purple);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--purple);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 800;
+            letter-spacing: -0.04em;
+            line-height: 1;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #ffffff 0%, #a855f7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto 48px;
+            font-weight: 400;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
         .btn {
-            display: inline-block;
-            background: #a855f7;
-            color: #000;
-            padding: 12px 24px;
-            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
             text-decoration: none;
-            font-weight: bold;
-            transition: opacity 0.2s;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+            position: relative;
+            overflow: hidden;
         }
-        .btn:hover { opacity: 0.8; }
-        footer { margin-top: 40px; font-size: 0.8rem; color: #555; }
+
+        .btn-primary {
+            background: var(--purple);
+            color: var(--black);
+            box-shadow: 0 0 40px rgba(168,85,247,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 60px rgba(168,85,247,0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--purple);
+            background: rgba(168,85,247,0.05);
+            transform: translateY(-2px);
+        }
+
+        .features-section {
+            margin: 100px 0;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .feature-card {
+            background: var(--surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 1s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--purple), transparent);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .feature-card:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(168,85,247,0.1);
+            border: 1px solid rgba(168,85,247,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover .feature-icon {
+            background: rgba(168,85,247,0.2);
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(168,85,247,0.2);
+        }
+
+        .feature-card h3 {
+            color: var(--text-bright);
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .feature-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .code-section {
+            margin: 100px 0;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 64px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 800;
+            color: var(--text-bright);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .code-window {
+            background: var(--surface-elevated);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .code-window::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--purple), transparent);
+        }
+
+        .code-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            background: rgba(0,0,0,0.3);
+        }
+
+        .code-header-left {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .code-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .code-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .code-label {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-family: 'JetBrains Mono', monospace;
+            margin-left: 8px;
+        }
+
+        .copy-btn {
+            background: rgba(168,85,247,0.1);
+            border: 1px solid rgba(168,85,247,0.2);
+            color: var(--purple-light);
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .copy-btn:hover {
+            background: rgba(168,85,247,0.2);
+            box-shadow: 0 0 20px rgba(168,85,247,0.1);
+        }
+
+        .copy-btn.copied {
+            background: rgba(39, 201, 63, 0.1);
+            border-color: rgba(39, 201, 63, 0.2);
+            color: #27c93f;
+        }
+
+        .code-content {
+            padding: 24px;
+            overflow-x: auto;
+        }
+
+        .code-content code {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            display: block;
+        }
+
+        .code-keyword { color: var(--purple-light); }
+        .code-string { color: #6ee7b7; }
+        .code-comment { color: #525252; }
+        .code-func { color: #60a5fa; }
+
+        footer {
+            margin-top: 120px;
+            padding: 48px 0;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--purple-light), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-text {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-text a {
+            color: var(--purple-light);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-text a:hover {
+            opacity: 0.8;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-bright);
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--border-hover);
+        }
+
+        ::selection {
+            background: rgba(168,85,247,0.3);
+            color: var(--text-bright);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+                max-width: 300px;
+            }
+        }
+
+        .glow-hover {
+            transition: box-shadow 0.3s;
+        }
+
+        .glow-hover:hover {
+            box-shadow: 0 0 30px rgba(168,85,247,0.15);
+        }
     </style>
+<base target="_blank">
 </head>
 <body>
-    <div class="container">
-        <h1>phantom 🌌</h1>
-        <p>pure black, electric purple accents. custom built for a cleaner look.</p>
-        
-        <div class="feature-box">
-            <h3>📌 features</h3>
-            <ul>
-                <li><b>pure amoled:</b> pitch black, not gray.</li>
-                <li><b>electric purple:</b> clean, sharp accents.</li>
-            </ul>
+    <canvas id="starfield"></canvas>
+    <div class="noise"></div>
+    <div class="orb"></div>
+    <div class="orb orb-2"></div>
 
-            <h3>🛠️ quick import</h3>
-            <code>@import url("https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css");</code>
-            
-            <a href="https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css" download="phantom.theme.css" class="btn">Download Raw CSS</a>
-        </div>
+    <div class="container">
+        <nav>
+            <div class="logo">phantom 🌌</div>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#install">Install</a></li>
+                <li><a href="https://github.com/novimp3/phantom-theme" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+
+        <section class="hero">
+            <div class="badge">v2.0 Now Available</div>
+            <h1>phantom</h1>
+            <p class="hero-subtitle">Pure AMOLED black meets electric purple. A Discord theme engineered for those who demand absolute darkness with surgical precision.</p>
+            <div class="hero-cta">
+                <a href="https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css" download="phantom.theme.css" class="btn btn-primary">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                    Download Theme
+                </a>
+                <button class="btn btn-secondary" onclick="document.getElementById('install').scrollIntoView({behavior: 'smooth'})">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                    Quick Install
+                </button>
+            </div>
+        </section>
+
+        <section class="features-section" id="features">
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚫</div>
+                    <h3>Pure AMOLED</h3>
+                    <p>Absolute pitch black (#000000) backgrounds. Not dark gray, not charcoal. True black that turns off pixels on OLED displays, saving battery and looking immaculate.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Electric Purple</h3>
+                    <p>Surgical accent color deployment. Purple is used sparingly and precisely—interactive states, mentions, and critical UI elements only. No purple fatigue.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Zero Bloat</h3>
+                    <p>Single CSS import. No JavaScript dependencies. No external assets. The entire theme is leaner than most favicons, loading instantly every time.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h3>Native Integration</h3>
+                    <p>Built to work seamlessly with BetterDiscord, Vencord, and Replugged. Uses CSS variables natively so other plugins can theme on top without conflicts.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="code-section" id="install">
+            <div class="section-header">
+                <h2>Quick Import</h2>
+                <p>One line. Zero configuration. Instant transformation.</p>
+            </div>
+            <div class="code-window glow-hover">
+                <div class="code-header">
+                    <div class="code-header-left">
+                        <div class="code-dots">
+                            <div class="code-dot" style="background: #ff5f56;"></div>
+                            <div class="code-dot" style="background: #ffbd2e;"></div>
+                            <div class="code-dot" style="background: #27c93f;"></div>
+                        </div>
+                        <span class="code-label">phantom.theme.css</span>
+                    </div>
+                    <button class="copy-btn" onclick="copyCode(this)">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        <span>Copy</span>
+                    </button>
+                </div>
+                <div class="code-content">
+                    <code><span class="code-keyword">@import</span> <span class="code-func">url</span>(<<span class="code-string">"https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css"</span>);</code>
+                </div>
+            </div>
+        </section>
 
         <footer>
-            credits to <b>luckfire</b> for amoled-cord. stay phantom ✌️
+            <div class="footer-content">
+                <div class="footer-logo">phantom 🌌</div>
+                <p class="footer-text">
+                    Credits to <a href="https://github.com/luckfire" target="_blank">luckfire</a> for the original AMOLED-Cord foundation.
+                </p>
+                <ul class="footer-links">
+                    <li><a href="https://github.com/novimp3/phantom-theme" target="_blank">GitHub</a></li>
+                    <li><a href="https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css" download>Download</a></li>
+                    <li><a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Back to Top</a></li>
+                </ul>
+                <p class="footer-text" style="font-size: 0.8rem; margin-top: 8px;">stay phantom ✌️</p>
+            </div>
         </footer>
     </div>
+
+    <script>
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let stars = [];
+        const numStars = 150;
+
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+
+        class Star {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.size = Math.random() * 1.5;
+                this.speedX = (Math.random() - 0.5) * 0.2;
+                this.speedY = (Math.random() - 0.5) * 0.2;
+                this.opacity = Math.random();
+                this.fadeSpeed = 0.005 + Math.random() * 0.01;
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                this.opacity += this.fadeSpeed;
+
+                if (this.opacity > 1 || this.opacity < 0) {
+                    this.fadeSpeed = -this.fadeSpeed;
+                }
+
+                if (this.x < 0 || this.x > width || this.y < 0 || this.y > height) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.fillStyle = `rgba(168, 85, 247, ${this.opacity * 0.5})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+
+        function initStars() {
+            stars = [];
+            for (let i = 0; i < numStars; i++) {
+                stars.push(new Star());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            stars.forEach(star => {
+                star.update();
+                star.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            resize();
+            initStars();
+        });
+
+        resize();
+        initStars();
+        animate();
+
+        function copyCode(btn) {
+            const code = `@import url("https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css");`;
+            navigator.clipboard.writeText(code).then(() => {
+                const original = btn.innerHTML;
+                btn.innerHTML = `<svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg><span>Copied!</span>`;
+                btn.classList.add('copied');
+                
+                setTimeout(() => {
+                    btn.innerHTML = original;
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        document.addEventListener('mousemove', (e) => {
+            const orbs = document.querySelectorAll('.orb');
+            const x = (e.clientX / window.innerWidth - 0.5) * 20;
+            const y = (e.clientY / window.innerHeight - 0.5) * 20;
+            
+            orbs.forEach((orb, index) => {
+                const factor = index === 0 ? 1 : -1;
+                orb.style.transform = `translate(${x * factor}px, ${y * factor}px)`;
+            });
+        });
+    </script>
 </body>
 </html>
