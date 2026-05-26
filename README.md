@@ -24,4 +24,6 @@ this code is fully open source and you can fork it as long as you will give me a
 ### 🤝 credits
 massive credits to **luckfire** for creating **amoled-cord**. this is heavily based on/inspired by their work.
 
+huge thank you to [**artbm172**](https://github.com/artbm172) for helping debug and fix the theme.
+
 enjoy ✌️
