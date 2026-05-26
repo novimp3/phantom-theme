@@ -7,47 +7,69 @@
     <style>
         body {
             background-color: #000;
-            color: #e4e4e7;
-            font-family: 'Space Grotesk', sans-serif;
+            color: #d1d1d1;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            padding: 50px 20px;
             margin: 0;
-            padding: 50px;
-            line-height: 1.6;
         }
-        .container { max-width: 600px; margin: auto; }
-        h1 { color: #a855f7; font-size: 3rem; }
-        code { background: #111; padding: 2px 6px; border-radius: 4px; color: #c084fc; }
-        a { color: #a855f7; text-decoration: none; font-weight: bold; }
+        .container {
+            max-width: 500px;
+            width: 100%;
+        }
+        h1 { color: #a855f7; font-size: 2.5rem; margin-bottom: 0.5rem; }
+        p { margin-bottom: 2rem; }
+        .feature-box { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 20px; border-radius: 12px; }
+        h3 { color: #fff; margin-top: 0; }
+        ul { padding-left: 20px; color: #a1a1a1; }
+        li { margin-bottom: 10px; }
+        code {
+            display: block;
+            background: #000;
+            color: #a855f7;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #2a2a2a;
+            margin: 15px 0;
+            word-break: break-all;
+        }
         .btn {
             display: inline-block;
             background: #a855f7;
             color: #000;
             padding: 12px 24px;
-            border-radius: 8px;
+            border-radius: 6px;
+            text-decoration: none;
             font-weight: bold;
-            margin-top: 20px;
+            transition: opacity 0.2s;
         }
+        .btn:hover { opacity: 0.8; }
+        footer { margin-top: 40px; font-size: 0.8rem; color: #555; }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>phantom 🌌</h1>
-        <p>pure black with electric purple vibes. built because community banners kept breaking sidebar colors, so i nuked them.</p>
+        <p>pure black, electric purple accents.</p>
         
-        <h3>📌 features</h3>
-        <ul>
-            <li><b>pure amoled black:</b> pitch black, not gray.</li>
-            <li><b>electric purple:</b> clean accents.</li>
-            <li><b>clean fonts:</b> bold space grotesk.</li>
-        </ul>
+        <div class="feature-box">
+            <h3>📌 features</h3>
+            <ul>
+                <li><b>pure amoled:</b> pitch black, not gray.</li>
+                <li><b>electric purple:</b> clean, sharp accents.</li>
+                <li><b>nuked banners:</b> no more broken sidebar visual junk.</li>
+            </ul>
 
-        <h3>🛠️ quick import</h3>
-        <p>Copy this into your client's theme settings:</p>
-        <code>@import url("https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css");</code>
-        
-        <br><br>
-        <a href="https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css" class="btn">Download Raw CSS</a>
-        
-        <p><small>credits to <b>luckfire</b> for amoled-cord. enjoy ✌️</small></p>
+            <h3>🛠️ quick import</h3>
+            <code>@import url("https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css");</code>
+            
+            <a href="https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css" download="phantom.theme.css" class="btn">Download Raw CSS</a>
+        </div>
+
+        <footer>
+            credits to <b>luckfire</b> for amoled-cord. stay phantom ✌️
+        </footer>
     </div>
 </body>
 </html>
