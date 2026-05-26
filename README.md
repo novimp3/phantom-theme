@@ -12,6 +12,11 @@ pure black with electric purple vibes. built because community banners kept brea
 2. open your client settings and go to **themes**.
 3. paste the link into the online themes section and load it.
 
+### 🌐 website
+<a href="https://novimp3.github.io/phantom-theme/" style="background:#a855f7; color:#000; padding:10px 20px; border-radius:6px; text-decoration:none; font-weight:bold; display:inline-block;">
+    🌐 Visit the Phantom Site
+</a>
+
 ### 🤝 credits
 massive credits to **luckfire** for creating **amoled-cord**. this is heavily based on/inspired by their work.
 
