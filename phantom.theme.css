@@ -137,21 +137,34 @@
     background: #000000 !important;
 }
 
-/* READ channels — darker so unread pops */
+/* channels */
 [class*="containerDefault_"] [class*="name_"] {
     color: #6b7280 !important;
 }
 
-/* UNREAD channels — lighter gray, not blinding white */
+/* UNREAD channels — white-ish so they pop */
 [class*="modeUnread_"] [class*="name_"],
 [class*="modeUnreadImportant_"] [class*="name_"] {
-    color: #d4d4d8 !important;
+    color: #e4e4e7 !important;
     font-weight: 600 !important;
 }
 
-/* SELECTED channel */
+/* SELECTED channel — subtle purple bg tint */
+[class*="modeSelected_"] [class*="wrapper_"] {
+    background: rgba(168, 85, 247, 0.06) !important;
+    border-radius: 4px !important;
+}
+
 [class*="modeSelected_"] [class*="name_"] {
     color: #ffffff !important;
+}
+
+/* category headers — small purple section labels */
+[class*="sidebar_"] [class*="container_"] > [class*="wrapper_"] > [class*="name_"] {
+    color: #a855f7 !important;
+    font-weight: 700 !important;
+    font-size: 11px !important;
+    letter-spacing: 0.6px !important;
 }
 
 /* lines fix */
@@ -211,6 +224,34 @@ div[class*="repliedMessage_"] {
     font-size: 15px !important;
     line-height: 1.5 !important;
     font-weight: 500 !important;
+}
+
+/* embeds - stop them from vanishing into black */
+[class*="embed_"],
+[class*="embedFull_"],
+[class*="attachment_"],
+[class*="wrapper_"][class*="media_"],
+[class*="container_"][class*="embed_"] {
+    background: #050505 !important;
+    border: 1px solid rgba(168, 85, 247, 0.15) !important;
+    border-radius: 6px !important;
+}
+
+/* embed left color bars */
+[class*="embed_"] [class*="embedSideColor_"],
+[class*="embedFull_"] [class*="side_"] {
+    background: #a855f7 !important;
+}
+
+/* embed text links */
+[class*="embed_"] [class*="title_"],
+[class*="embed_"] [class*="description_"] {
+    color: #e4e4e7 !important;
+}
+
+[class*="embed_"] a,
+[class*="embed_"] [class*="anchor_"] {
+    color: #c084fc !important;
 }
 
 /* hidden elements */
