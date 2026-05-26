@@ -137,21 +137,24 @@
     background: #000000 !important;
 }
 
-/* channels */
+/* READ channels — darker so unread pops */
 [class*="containerDefault_"] [class*="name_"] {
-    color: #9ca3af !important;
+    color: #6b7280 !important;
 }
 
-[class*="modeUnread_"] [class*="name_"] {
-    color: #c084fc !important;
-    font-weight: 700 !important;
+/* UNREAD channels — lighter gray, not blinding white */
+[class*="modeUnread_"] [class*="name_"],
+[class*="modeUnreadImportant_"] [class*="name_"] {
+    color: #d4d4d8 !important;
+    font-weight: 600 !important;
 }
 
+/* SELECTED channel */
 [class*="modeSelected_"] [class*="name_"] {
     color: #ffffff !important;
 }
 
-/* lines fix — keep selected & mentioned borders hidden */
+/* lines fix */
 li[class*="containerDefault_"][class*="selected_"] {
     border-left: none !important;
 }
@@ -160,7 +163,7 @@ li[class*="containerDefault_"][class*="selected_"] {
     display: none !important;
 }
 
-/* unread channel indicators — RESTORED */
+/* unread pills — purple dot */
 div[class*="unread_"] {
     background: #a855f7 !important;
 }
