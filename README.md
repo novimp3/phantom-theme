@@ -3,7 +3,7 @@
 pure black with electric purple vibes. 
 
 ## preview
-![preview]([https://example.com/logo.png](https://ibb.co/9kKq9CDd))
+![preview](https://ibb.co/9kKq9CDd)
 
 ### 📌 features
 * **pure amoled black:** everything is pitch black, not that weird default dark gray.
