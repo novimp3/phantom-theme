@@ -2,56 +2,74 @@
 
 /**
  * @name phantom-theme
- * @description basically AMOLED-cord but better. (all credits to luckfire.) 
+ * @description basically AMOLED-cord but better.
  * @author novi.mp3
- * @version 1.0
+ * @version 1.4
  */
 
 :root,
-html,
-body,
 .theme-dark,
 .theme-midnight {
-    --font-primary: 'Space Grotesk', sans-serif !important;
-    --font-display: 'Space Grotesk', sans-serif !important;
-    --font-headline: 'Space Grotesk', sans-serif !important;
-    --font-code: 'Consolas', monospace !important;
+    --font-primary: 'Space Grotesk', sans-serif;
+    --font-display: 'Space Grotesk', sans-serif;
+    --font-headline: 'Space Grotesk', sans-serif;
+    --font-code: 'Consolas', monospace;
 
-    --text-normal: #e4e4e7 !important;
-    --text-muted: #9ca3af !important;
+    --text-normal: #e4e4e7;
+    --text-muted: #9ca3af;
 
-    /* accents */
-    --brand-experiment: #a855f7 !important;
-    --text-brand: #a855f7 !important;
-    --text-link: #c084fc !important;
-    --status-danger: #a855f7 !important;
-    
-    --background-mentioned: rgba(168, 85, 247, 0.14) !important;
-    --background-mentioned-hover: rgba(168, 85, 247, 0.22) !important;
-    
-    /* pure black backgrounds */
-    --background-base-lowest: #000000 !important; 
-    --background-base-lower: #000000 !important;  
-    --background-base-low: #050505 !important;    
-    --background-surface-high: #0a0a0a !important; 
-    
-    --background-primary: #000000 !important;
-    --background-secondary: #000000 !important;
-    --background-secondary-alt: #000000 !important;
-    --background-tertiary: #000000 !important;
-    --background-floating: var(--background-surface-high) !important;
-    
-    --modal-background: #000000 !important;
-    --modal-footer-background: #000000 !important;
+    --brand-experiment: #a855f7;
+    --brand-500: #a855f7;
+    --brand-560: #a855f7;
+    --text-brand: #a855f7;
+    --text-link: #c084fc;
+    --status-danger: #a855f7;
+
+    --background-mentioned: rgba(168, 85, 247, 0.14);
+    --background-mentioned-hover: rgba(168, 85, 247, 0.22);
+
+    --background-base-lowest: #000000;
+    --background-base-lower: #000000;
+    --background-base-low: #050505;
+    --background-surface-high: #000000;
+    --background-surface-higher: #000000;
+
+    --background-primary: #000000;
+    --background-secondary: #000000;
+    --background-secondary-alt: #000000;
+    --background-tertiary: #000000;
+    --background-floating: #000000;
+
+    --modal-background: #000000;
+    --modal-footer-background: #000000;
+    --home-background: #000000;
+
+    --background-modifier-hover: rgba(255,255,255,0.03);
+    --background-modifier-active: rgba(255,255,255,0.05);
+    --background-modifier-selected: rgba(255,255,255,0.07);
+    --background-modifier-accent: transparent;
+
+    --border-subtle: transparent;
+    --border-muted: transparent;
+    --app-frame-border: transparent;
 }
 
-/* tried to fix something */
-nav[class*="sidebar_"] header,
-nav[class*="sidebar_"] [class*="header_"],
-nav[class*="sidebar_"] [class*="animatedContainer_"],
-[class*="bannerImage_"],
-[class*="bannerVisible_"],
-[class*="container_"] > [class*="header_"] {
+/* sidebar */
+[class*="sidebar_"],
+[class*="sidebar_"] > div,
+[class*="sidebar_"] [class*="scroller_"] {
+    background: #000000 !important;
+}
+
+/* voice channels — force black on every layer */
+[class*="voiceUser_"],
+[class*="voiceUser_"] > div,
+[class*="voiceUser_"] > div > div,
+[class*="voiceUsers_"] > li,
+[class*="voiceUsers_"] > div,
+[class*="draggable_"] > div,
+[class*="containerDefault_"] [class*="list_"] > li,
+[class*="containerDefault_"] [class*="list_"] > div {
     background: #000000 !important;
     background-color: #000000 !important;
     background-image: none !important;
@@ -59,58 +77,144 @@ nav[class*="sidebar_"] [class*="animatedContainer_"],
     border: none !important;
 }
 
-/* tried to fix something, dont mind it */
+[class*="voiceUser_"] [class*="username_"],
+[class*="voiceUser_"] [class*="name_"] {
+    color: var(--text-normal) !important;
+}
+
+[class*="voiceUser_"] [class*="avatarSpeaking_"],
+[class*="voiceUser_"] [class*="speaking_"] {
+    box-shadow: inset 0 0 0 2px #a855f7 !important;
+}
+
+/* remove server banners */
+[class*="bannerImage_"],
+[class*="animatedContainer_"],
+[class*="animatedBanner_"] {
+    background: #000000 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* sidebar header */
+[class*="sidebar_"] [class*="header_"],
+[class*="headerContent_"] {
+    background: #000000 !important;
+    background-image: none !important;
+    border: none !important;
+}
+
+/* user panel */
+[class*="panels_"] {
+    background: #000000 !important;
+    background-image: none !important;
+    border: none !important;
+}
+
+/* upsells */
+[class*="sidebar_"] [class*="upsell_"],
+[class*="sidebar_"] [class*="premiumPromo_"],
+[class*="sidebar_"] [class*="nitroUpsell_"],
+[class*="sidebar_"] [class*="perks_"],
+[class*="sidebar_"] [class*="premium_"],
+[class*="sidebar_"] [class*="guildPremium_"],
+[class*="sidebar_"] [class*="boostProgressBar_"] {
+    background: #000000 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* page backgrounds */
 [class*="pageBody_"],
 [class*="peopleColumn_"],
-[class*="container_5bc33"],
 [class*="privateChannels_"],
-[class*="scroller_5bc33"],
 [class*="standardSidebarView_"],
 [class*="contentRegion_"],
-[class*="chatContent_"] {
-    background-color: #000000 !important;
+[class*="chatContent_"],
+[class*="chat_"] > [class*="content_"] {
+    background: #000000 !important;
 }
 
 /* channels */
-[class*="containerDefault_"] [class*="name_"] { 
-    color: #9ca3af !important; 
+[class*="containerDefault_"] [class*="name_"] {
+    color: #9ca3af !important;
 }
-[class*="modeUnread_"] [class*="name_"] { 
-    color: #c084fc !important; 
-    font-weight: 700 !important; 
+
+[class*="modeUnread_"] [class*="name_"] {
+    color: #c084fc !important;
+    font-weight: 700 !important;
 }
-[class*="modeSelected_"] [class*="name_"] { 
-    color: #ffffff !important; 
+
+[class*="modeSelected_"] [class*="name_"] {
+    color: #ffffff !important;
+}
+
+/* desprate try to fix the lines issue */
+li[class*="containerDefault_"][class*="selected_"] {
+    border-left: none !important;
+}
+
+[class*="unread_"] {
+    display: none !important;
+}
+
+[class*="mentioned_"]::before {
+    display: none !important;
 }
 
 /* hovers */
 li[class*="containerDefault_"] div[class*="wrapper_"] {
     transition: transform 0.2s ease, background 0.2s ease !important;
 }
+
 li[class*="containerDefault_"]:hover div[class*="wrapper_"] {
     transform: translateX(4px) !important;
     background: linear-gradient(90deg, rgba(168, 85, 247, 0.1) 0%, transparent 100%) !important;
 }
-li[class*="containerDefault_"][class*="selected_"] { border-left: 2px solid #a855f7 !important; }
 
 /* badges & pings */
-div[class*="unread_"] { background: #a855f7 !important; }
-[class*="numberBadge_"], [class*="iconBadge_"], [class*="mentionsBadge_"] { background: #a855f7 !important; color: #ffffff !important; }
-span[class*="mention"] { color: #c084fc !important; background: rgba(168, 85, 247, 0.15) !important; }
-[class*="mentioned_"] { background: rgba(168, 85, 247, 0.10) !important; }
-[class*="mentioned_"]::before { background: #a855f7 !important; }
+[class*="numberBadge_"],
+[class*="iconBadge_"],
+[class*="mentionsBadge_"] {
+    background: #a855f7 !important;
+    color: #ffffff !important;
+}
+
+span[class*="mention"] {
+    color: #c084fc !important;
+    background: rgba(168, 85, 247, 0.15) !important;
+}
+
+[class*="mentioned_"] {
+    background: rgba(168, 85, 247, 0.10) !important;
+}
 
 /* chat */
 div[class*="channelTextArea_"] div[class*="scrollableContainer_"] {
     background: #050505 !important;
-    border: 1px solid rgba(255,255,255,0.05) !important;
+    border: none !important;
     border-radius: 8px !important;
 }
-div[class*="channelTextArea_"] div[class*="scrollableContainer_"]:focus-within { border: 1px solid #a855f7 !important; }
-div[class*="messageContent_"], div[class*="repliedMessage_"] {
-    font-size: 15px !important; line-height: 1.5 !important; font-weight: 500 !important;
+
+div[class*="channelTextArea_"] div[class*="scrollableContainer_"]:focus-within {
+    box-shadow: inset 0 0 0 1px #a855f7 !important;
 }
 
-/* Hidden elements */
-button[aria-label="Send a gift"] { display: none !important; }
-[class*="scroller_"]::before, [class*="scroller_"]::after { display: none !important; }
+div[class*="messageContent_"],
+div[class*="repliedMessage_"] {
+    font-size: 15px !important;
+    line-height: 1.5 !important;
+    font-weight: 500 !important;
+}
+
+/* hidden elements */
+button[aria-label="Send a gift"] {
+    display: none !important;
+}
+
+[class*="scroller_"]::before,
+[class*="scroller_"]::after {
+    display: none !important;
+}
