@@ -13,10 +13,7 @@ pure black with electric purple vibes. built because community banners kept brea
 3. paste the link into the online themes section and load it.
 
 ### 🌐 website
-<a href="https://novimp3.github.io/phantom-theme/" 
-   style="background: #000; color: #a855f7; padding: 5px 15px; border: 3px solid #a855f7; text-decoration: none; font-weight: 900; font-family: monospace; display: inline-block; text-transform: uppercase;">
-   > VISIT SITE
-</a>
+[![Website](https://img.shields.io/badge/🔗_Visit_Website-4285F4?style=for-the-badge&logoColor=white)](https://novimp3.github.io/phantom-theme)
 ### 🤝 credits
 massive credits to **luckfire** for creating **amoled-cord**. this is heavily based on/inspired by their work.
 
