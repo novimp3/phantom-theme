@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+/**
+ * @name phantom-theme
+ * @description basically AMOLED-cord but better. (all credits to luckfire.) 
+ * @author novi.mp3
+ * @version 1.0
+ */
+
+:root,
+html,
+body,
+.theme-dark,
+.theme-midnight {
+    --font-primary: 'Space Grotesk', sans-serif !important;
+    --font-display: 'Space Grotesk', sans-serif !important;
+    --font-headline: 'Space Grotesk', sans-serif !important;
+    --font-code: 'Consolas', monospace !important;
+
+    --text-normal: #e4e4e7 !important;
+    --text-muted: #9ca3af !important;
+
+    /* accents */
+    --brand-experiment: #a855f7 !important;
+    --text-brand: #a855f7 !important;
+    --text-link: #c084fc !important;
+    --status-danger: #a855f7 !important;
+    
+    --background-mentioned: rgba(168, 85, 247, 0.14) !important;
+    --background-mentioned-hover: rgba(168, 85, 247, 0.22) !important;
+    
+    /* pure black backgrounds */
+    --background-base-lowest: #000000 !important; 
+    --background-base-lower: #000000 !important;  
+    --background-base-low: #050505 !important;    
+    --background-surface-high: #0a0a0a !important; 
+    
+    --background-primary: #000000 !important;
+    --background-secondary: #000000 !important;
+    --background-secondary-alt: #000000 !important;
+    --background-tertiary: #000000 !important;
+    --background-floating: var(--background-surface-high) !important;
+    
+    --modal-background: #000000 !important;
+    --modal-footer-background: #000000 !important;
+}
+
+/* tried to fix something */
+nav[class*="sidebar_"] header,
+nav[class*="sidebar_"] [class*="header_"],
+nav[class*="sidebar_"] [class*="animatedContainer_"],
+[class*="bannerImage_"],
+[class*="bannerVisible_"],
+[class*="container_"] > [class*="header_"] {
+    background: #000000 !important;
+    background-color: #000000 !important;
+    background-image: none !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+/* tried to fix something, dont mind it */
+[class*="pageBody_"],
+[class*="peopleColumn_"],
+[class*="container_5bc33"],
+[class*="privateChannels_"],
+[class*="scroller_5bc33"],
+[class*="standardSidebarView_"],
+[class*="contentRegion_"],
+[class*="chatContent_"] {
+    background-color: #000000 !important;
+}
+
+/* channels */
+[class*="containerDefault_"] [class*="name_"] { 
+    color: #9ca3af !important; 
+}
+[class*="modeUnread_"] [class*="name_"] { 
+    color: #c084fc !important; 
+    font-weight: 700 !important; 
+}
+[class*="modeSelected_"] [class*="name_"] { 
+    color: #ffffff !important; 
+}
+
+/* hovers */
+li[class*="containerDefault_"] div[class*="wrapper_"] {
+    transition: transform 0.2s ease, background 0.2s ease !important;
+}
+li[class*="containerDefault_"]:hover div[class*="wrapper_"] {
+    transform: translateX(4px) !important;
+    background: linear-gradient(90deg, rgba(168, 85, 247, 0.1) 0%, transparent 100%) !important;
+}
+li[class*="containerDefault_"][class*="selected_"] { border-left: 2px solid #a855f7 !important; }
+
+/* badges & pings */
+div[class*="unread_"] { background: #a855f7 !important; }
+[class*="numberBadge_"], [class*="iconBadge_"], [class*="mentionsBadge_"] { background: #a855f7 !important; color: #ffffff !important; }
+span[class*="mention"] { color: #c084fc !important; background: rgba(168, 85, 247, 0.15) !important; }
+[class*="mentioned_"] { background: rgba(168, 85, 247, 0.10) !important; }
+[class*="mentioned_"]::before { background: #a855f7 !important; }
+
+/* chat */
+div[class*="channelTextArea_"] div[class*="scrollableContainer_"] {
+    background: #050505 !important;
+    border: 1px solid rgba(255,255,255,0.05) !important;
+    border-radius: 8px !important;
+}
+div[class*="channelTextArea_"] div[class*="scrollableContainer_"]:focus-within { border: 1px solid #a855f7 !important; }
+div[class*="messageContent_"], div[class*="repliedMessage_"] {
+    font-size: 15px !important; line-height: 1.5 !important; font-weight: 500 !important;
+}
+
+/* Hidden elements */
+button[aria-label="Send a gift"] { display: none !important; }
+[class*="scroller_"]::before, [class*="scroller_"]::after { display: none !important; }
