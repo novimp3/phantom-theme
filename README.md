@@ -15,7 +15,7 @@ pure black with electric purple vibes.
 2. open your client settings and go to **themes**.
 3. paste the link into the online themes section and load it.
 
-alternative method
+### 🛠️ alternative method
 1. copy this link https://raw.githubusercontent.com/novimp3/phantom-theme/main/phantom.theme.css
 2. go to your client's themes tab
 3. paste the link in "online themes" 
