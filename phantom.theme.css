@@ -1,3 +1,5 @@
+/* Phantom Theme by Novi */
+
 @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 /**
@@ -67,11 +69,34 @@
     border: none;
 }
 
-/* white line separating DM button from servers */
+/* REMOVE the old line from DM button */
 [class*="guilds_"] [class*="scroller_"] > div:first-child {
     position: relative;
-    padding-bottom: 11px;
-    margin-bottom: -6px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+[class*="guilds_"] [class*="scroller_"] > div:first-child::after {
+    display: none;
+}
+
+/* ADD line before first server */
+[class*="guilds_"] [class*="scroller_"] > div:nth-child(3) {
+    position: relative;
+    padding-top: 1px;
+    margin-top: 7px;
+}
+
+[class*="guilds_"] [class*="scroller_"] > div:nth-child(3)::before {
+    content: '';
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
 }
 
 [class*="guilds_"] [class*="scroller_"] > div:first-child::after {
@@ -351,8 +376,44 @@ button[aria-label="Send a gift"] {
 
 /* phantom logo on DMs button */
 .childWrapper__6e9f8 {
-  background-image: url('https://i.ibb.co/xSws4Bzv/6b723942-4b42-492c-8f28-e36b47ae421d.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  [d^='M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21'] {display: none;}
+    background-image: url('https://i.ibb.co/xSws4Bzv/6b723942-4b42-492c-8f28-e36b47ae421d.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+/* hide default Discord logo SVG inside DM button */
+.childWrapper__6e9f8 svg {
+    display: none;
+}
+
+/* DM ping badge — keep it subtle or match theme */
+[class*="guilds_"] [class*="numberBadge_"] {
+    background: #a855f7 !important;
+    color: #ffffff !important;
+}
+
+#app-mount::before {
+    content: "Phantom Theme by Novi";
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99999;
+    color: #a855f7;
+    font-family: var(--font-primary);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 16px;
+    background: rgba(0, 0, 0, 0.85);
+    border-bottom: 2px solid #a855f7;
+    border-right: 2px solid #a855f7;
+    border-radius: 0 0 10px 0;
+    pointer-events: none;
+    opacity: 0.9;
+    transition: opacity 0.2s ease;
+}
+
+#app-mount:hover::before {
+    opacity: 1;
 }
