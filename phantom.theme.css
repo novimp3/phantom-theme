@@ -67,6 +67,24 @@
     border: none;
 }
 
+/* white line separating DM button from servers */
+[class*="guilds_"] [class*="scroller_"] > div:first-child {
+    position: relative;
+    padding-bottom: 11px;
+    margin-bottom: -6px;
+}
+
+[class*="guilds_"] [class*="scroller_"] > div:first-child::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 3px;
+}
 /* voice channels - force black on every layer */
 [class*="voiceUser_"],
 [class*="voiceUser_"] > div,
@@ -329,4 +347,12 @@ button[aria-label="Send a gift"] {
 [class*="mentionsBadge_"] {
     background: #a855f7 !important;
     color: #ffffff 
+}
+
+/* phantom logo on DMs button */
+.childWrapper__6e9f8 {
+  background-image: url('https://i.ibb.co/xSws4Bzv/6b723942-4b42-492c-8f28-e36b47ae421d.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  [d^='M19.73 4.87a18.2 18.2 0 0 0-4.6-1.44c-.21'] {display: none;}
 }
