@@ -195,7 +195,7 @@ li[class*="containerDefault_"][class*="selected_"] {
     background-image: none;
 }
 
-[class*="newMessagesBar_"],
+/* jump to present bar */
 [class*="jumpToPresentBar_"] {
     background: #a855f7;
     background-color: #a855f7;
@@ -204,10 +204,12 @@ li[class*="containerDefault_"][class*="selected_"] {
     border: none;
 }
 
-/* fixes the awkward squished text look */
-[class*="jumpToPresentBar_"] {
-    padding: 0;
-    margin: 0;
+/* jump to present button */
+[class*="jumpToPresentBar_"] [class*="button_"] {
+    background: #7c3aed;
+    background-color: #7c3aed;
+    color: #ffffff;
+    border: none;
 }
 
 /* hovers */
