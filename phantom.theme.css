@@ -67,7 +67,7 @@
     border: none;
 }
 
-/* voice channels — force black on every layer */
+/* voice channels - force black on every layer */
 [class*="voiceUser_"],
 [class*="voiceUser_"] > div,
 [class*="voiceUser_"] > div > div,
@@ -182,12 +182,12 @@ li[class*="containerDefault_"][class*="selected_"] {
     display: none;
 }
 
-/* unread PILL — only inside channel rows, purple */
+/* unread PILL - only inside channel rows, purple */
 [class*="containerDefault_"] [class*="unread_"] {
     background: #a855f7;
 }
 
-/* KILL only the big top/bottom unread bars in sidebar — NOT channel pills */
+/* KILL only the big top/bottom unread bars in sidebar - NOT channel pills */
 [class*="sidebar_"] [class*="scroller_"] > div[class*="container_"][class*="bottom_"],
 [class*="sidebar_"] [class*="scroller_"] > div[class*="container_"][class*="top_"] {
     background: #000000;
@@ -195,11 +195,11 @@ li[class*="containerDefault_"][class*="selected_"] {
     background-image: none;
 }
 
-/* new messages banner in chat — force black */
+/* new messages banner in chat - purple */
 [class*="newMessagesBar_"],
 [class*="jumpToPresentBar_"] {
-    background: #000000;
-    background-color: #000000;
+    background: #a855f7;
+    background-color: #a855f7;
     background-image: none;
     box-shadow: none;
     border: none;
@@ -223,7 +223,7 @@ li[class*="containerDefault_"]:hover div[class*="wrapper_"] {
     color: #ffffff;
 }
 
-/* mentions — purple, no gold hover */
+/* mentions - purple, no gold hover */
 span[class*="mention"],
 span[class*="mention"]:hover,
 span[class*="mention"]:active {
@@ -231,7 +231,7 @@ span[class*="mention"]:active {
     background: rgba(168, 85, 247, 0.15) !important;
 }
 
-/* mentioned message background — stays same on hover */
+/* mentioned message background - stays same on hover */
 [class*="mentioned_"] {
     background: rgba(168, 85, 247, 0.10);
 }
