@@ -195,7 +195,6 @@ li[class*="containerDefault_"][class*="selected_"] {
     background-image: none;
 }
 
-/* new messages banner in chat - purple */
 [class*="newMessagesBar_"],
 [class*="jumpToPresentBar_"] {
     background: #a855f7;
@@ -203,6 +202,12 @@ li[class*="containerDefault_"][class*="selected_"] {
     background-image: none;
     box-shadow: none;
     border: none;
+}
+
+/* fixes the awkward squished text look */
+[class*="jumpToPresentBar_"] {
+    padding: 0;
+    margin: 0;
 }
 
 /* hovers */
