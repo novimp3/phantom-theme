@@ -1,13 +1,11 @@
-/* Phantom Theme by Novi */
-
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 /**
  * @name phantom-theme
  * @description basically AMOLED-cord but better.
  * @author novi.mp3
  * @version 1.3
  */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root,
 .theme-dark,
@@ -386,7 +384,7 @@ button[aria-label="Send a gift"] {
     display: none;
 }
 
-/* DM ping badge — keep it subtle or match theme */
+/* DM ping badge - keep it subtle or match theme */
 [class*="guilds_"] [class*="numberBadge_"] {
     background: #a855f7 !important;
     color: #ffffff !important;
